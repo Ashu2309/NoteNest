@@ -1,0 +1,11 @@
+.active_nav {
+  color: black;
+  border-bottom: 3px solid rgb(24, 137, 230);
+}
+.btns-card {
+  min-width: 0 !important;
+  padding: 7px !important;
+}
+.btns-card i {
+  font-size: 17px;
+}
