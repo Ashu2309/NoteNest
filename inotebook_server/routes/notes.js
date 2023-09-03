@@ -4,7 +4,7 @@ const fetchUser = require('../Middleware/fetchUser');
 const Notes = require("../models/Notes");
 const { body, validationResult } = require("express-validator");
 
-router.get("/fetchuser", fetchuser, async (req, res) => {
+router.get("/fetchUser", fetchUser, async (req, res) => {
   try {
     const notes = await Notes.find({ user: req.user.id });
     res.json(notes);
@@ -16,7 +16,7 @@ router.get("/fetchuser", fetchuser, async (req, res) => {
 
 router.post(
   "/addnote",
-  fetchuser,
+  fetchUser,
   [
     body("title", "Enter Valid title").isLength({ min: 2 }),
     body("description", "Enter valid description").isLength({ min: 5 }),
@@ -42,7 +42,7 @@ router.post(
 
 router.put(
   "/updatenote/:id",
-  fetchuser,
+  fetchUser,
   [
     body("title", "Enter Valid title").isLength({ min: 2 }),
     body("description", "Enter valid description").isLength({ min: 5 }),
@@ -91,7 +91,7 @@ router.put(
 );
 
 //deletion
-router.delete("/deletenote/:id", fetchuser, async (req, res) => {
+router.delete("/deletenote/:id", fetchUser, async (req, res) => {
   try {
     //Find note to be updated and update it
     let note = await Notes.findById(req.params.id);
