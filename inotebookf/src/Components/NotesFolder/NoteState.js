@@ -7,7 +7,7 @@ const NoteState = (props) => {
   let history = useHistory();
 
   const [notes, setnotes] = useState(notesInitial);
-  const host = "http://localhost:5000";
+  const host = "https://note-nest-wheat.vercel.app/";
 
   const state = {
     name: "Ashu",
@@ -18,7 +18,7 @@ const NoteState = (props) => {
   // GET all Func
   const getNote = async () => {
     //Api call
-    const response = await fetch(`http://localhost:5000/api/notes/fetchuser`, {
+    const response = await fetch(`https://note-nest-wheat.vercel.app/api/notes/fetchuser`, {
       method: "GET", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, *cors, same-origin
       headers: {
@@ -35,7 +35,7 @@ const NoteState = (props) => {
   // Add Func
   const addNote = async (title, description, tag) => {
     //Api call
-    const response = await fetch(`http://localhost:5000/api/notes/addnote`, {
+    const response = await fetch(`https://note-nest-wheat.vercel.app/api/notes/addnote`, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, *cors, same-origin
       headers: {
@@ -55,7 +55,7 @@ const NoteState = (props) => {
   const deleteNote = async (id) => {
     //Api call
     const response = await fetch(
-      `http://localhost:5000/api/notes/deletenote/${id}`,
+      `https://note-nest-wheat.vercel.app/api/notes/deletenote/${id}`,
       {
         method: "DELETE", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin
@@ -76,7 +76,7 @@ const NoteState = (props) => {
   // update Func
   const updateNote = async (id, title, description, tag) => {
     const response = await fetch(
-      `http://localhost:5000/api/notes/updatenote/${id}`,
+      `https://note-nest-wheat.vercel.app/api/notes/updatenote/${id}`,
       {
         method: "PUT", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin
