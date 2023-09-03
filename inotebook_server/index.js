@@ -5,7 +5,14 @@ var cors = require("cors");
 const mongoose = require("mongoose");
 // connectToMongo();
 const app = express();
-app.use(cors());
+app.use(cors(
+  {
+    origin:["https://nest-note.vercel.app"],
+    methods:["POST", "GET", "PUT", "PATCH", "DELETE"],
+    credentials:true
+  }
+));
+
 const port = process.env.PORT || 5000;
 
 app.get("/", (req, res) => {
