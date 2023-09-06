@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const app = express();
 app.use(cors(
   {
-    origin:["https://nest-note.vercel.app"],
+    origin:"*",
     methods:["POST", "GET", "PUT", "PATCH", "DELETE"],
     credentials:true
   }
