@@ -2,13 +2,11 @@ import "./App.css";
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
-  NavLink,
-  Link,
+  Switch
 } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import About from "./Components/About";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Home from "./Components/Home";
 import NoteState from "./Components/NotesFolder/NoteState";
 import Login from "./Components/Login";
@@ -51,7 +49,6 @@ function App() {
           </Switch>
         </Router>
       </NoteState>
-      <h1>App</h1>
     </>
   );
 }

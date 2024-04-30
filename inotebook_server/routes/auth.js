@@ -12,9 +12,9 @@ router.post(
   "/createuser",
   [
     body("email", "Enter Valid Email").isEmail(),
-    body("name", "Enter valid name").isLength({ min: 2 }),
+    body("name", "Enter valid name"),
     body("password", "Password length must be atleast 8 char").isLength({
-      min: 8,
+      min: 2,
     }),
   ],
   async (req, res) => {
@@ -55,7 +55,7 @@ router.post(
       res.json({ success, user, jwt: authToken });
     } catch (error) {
       console.error(error.message);
-      res.status(500).send("Some error has been occured");
+      res.status(500).send(error);
     }
   }
 );

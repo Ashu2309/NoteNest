@@ -16,7 +16,10 @@ const Login = ({ showAlert }) => {
   const handleEvent = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(`https://note-nest-gamma.vercel.app/api/auth/login`, {
+    const host = process.env.REACT_APP_PORT;
+
+
+    const response = await fetch(`${host}api/auth/login`, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +30,7 @@ const Login = ({ showAlert }) => {
       }),
     });
     const json = await response.json();
-    console.log(json);
+    //console.log(json);
     if (json.success) {
       //save auth token
       localStorage.setItem("token", json.authToken);

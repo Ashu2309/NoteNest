@@ -7,7 +7,9 @@ const NoteState = (props) => {
   let history = useHistory();
 
   const [notes, setnotes] = useState(notesInitial);
-  const host = "https://note-nest-wheat.vercel.app/";
+  // const host = "https://note-nest-wheat.vercel.app/";
+  const host = process.env.REACT_APP_PORT;
+
 
   const state = {
     name: "Ashu",

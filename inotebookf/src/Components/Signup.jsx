@@ -17,20 +17,21 @@ const Signup = ({ showAlert }) => {
 
   const handleEvent = async (e) => {
     e.preventDefault();
+    const host = process.env.REACT_APP_PORT;
 
-    const response = await fetch(`https://note-nest-gamma.vercel.app/api/auth/createuser`, {
+    const response = await fetch(`${host}api/auth/createuser`, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: credentials.name,
+        name: credentials.name,
         password: credentials.password,
         email: credentials.email,
       }),
     });
     const json = await response.json();
-    console.log(json);
+    //console.log(json);
     if (json.success) {
       //save auth token
       //redirect
