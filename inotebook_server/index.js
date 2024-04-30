@@ -5,14 +5,12 @@ var cors = require("cors");
 const mongoose = require("mongoose");
 connectToMongo();
 const app = express();
-app.use(cors(
-  {
-    origin: "*",
-    methods: ["POST", "GET", "PUT", "PATCH", "DELETE"],
-    credentials: true
-  }
-));
-app.use(cors());
+app.use(cors({
+  origin: "https://astounding-churros-0f8805.netlify.app",
+  methods: ["POST", "GET", "PUT", "PATCH", "DELETE"],
+  credentials: true
+}));
+
 
 const port = process.env.SERVER_PORT || 8000;
 
