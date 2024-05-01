@@ -18,34 +18,37 @@ const Signup = ({ showAlert }) => {
   const handleEvent = async (e) => {
     e.preventDefault();
     const host = process.env.REACT_APP_PORT;
+    if (credentials.password === credentials.cpassword) {
+      const response = await fetch(`${host}api/auth/createuser`, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: credentials.name,
+          password: credentials.password,
+          email: credentials.email,
+        }),
+      });
+      const json = await response.json();
+      //console.log(json);
+      if (json.success) {
+        //save auth token
+        //redirect
+        // localStorage.setItem("token", json.authToken);
 
-    const response = await fetch(`${host}api/auth/createuser`, {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: credentials.name,
-        password: credentials.password,
-        email: credentials.email,
-      }),
-    });
-    const json = await response.json();
-    //console.log(json);
-    if (json.success) {
-      //save auth token
-      //redirect
-      // localStorage.setItem("token", json.authToken);
-
-      showAlert("Registred Successfully", "success");
-      history.push("/");
+        showAlert("Registred Successfully", "success");
+        history.push("/");
+      } else {
+        showAlert("Invalid Credentials", "danger");
+      }
     } else {
-      showAlert("Invalid Credentials", "danger");
+      showAlert("Password Don't Match !", "danger");
     }
   };
   return (
     <>
-      <div className="mt-5 p-5 w-50 shadow-lg container d-flex justify-content-center align-items-center flex-column">
+      <div className="mt-5 px-2 py-5 w-75 shadow-lg container d-flex justify-content-center align-items-center flex-column">
         <h1 className="text-primary" style={{ textShadow: "2px 2px 2px cyan" }}>
           Signup
         </h1>
@@ -114,7 +117,7 @@ const Signup = ({ showAlert }) => {
               htmlFor="validationCustom01"
               className="form-p font-weight-bolder text-primary"
             >
-              COnfirm Password
+              Confirm Password
             </h5>
             <input
               type="password"
@@ -127,23 +130,7 @@ const Signup = ({ showAlert }) => {
             />
             <div className="valid-feedback">Looks good!</div>
           </div>
-          <div className=" d-flex align-items-center justify-content-center">
-            <div className="form-check w-75">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id="invalidCheck"
-                required
-              />
-              <h5 className="form-check-p" htmlFor="invalidCheck">
-                Agree to terms and conditions
-              </h5>
-              <div className="invalid-feedback">
-                You must agree before submitting.
-              </div>
-            </div>
-          </div>
+
           <div className="w-75">
             <button className="btn btn-info text-light" type="submit">
               Signup

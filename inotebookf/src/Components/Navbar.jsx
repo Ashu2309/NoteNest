@@ -59,7 +59,7 @@ const Navbar = () => {
               </ul>
 
               {!localStorage.getItem("token") ? (
-                <form className="d-flex align-items-center">
+                <div className="d-flex align-items-center logout-section">
                   <NavLink to="/login" className="text-decoration-none">
                     <Button variant="contained" className="bg-info mx-2 ">
                       Login
@@ -73,7 +73,7 @@ const Navbar = () => {
                       Signup
                     </Button>
                   </NavLink>
-                </form>
+                </div>
               ) : (
                 <form className="d-flex align-items-center">
                   <span

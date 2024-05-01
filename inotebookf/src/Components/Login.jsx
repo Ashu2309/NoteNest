@@ -44,7 +44,7 @@ const Login = ({ showAlert }) => {
   };
   return (
     <>
-      <div className="mt-5 p-5 w-50 shadow-lg container d-flex justify-content-center align-items-center flex-column">
+      <div className="mt-5 px-2 py-5 w-75 shadow-lg container d-flex justify-content-center align-items-center flex-column">
         <h1 className="text-primary" style={{ textShadow: "2px 2px 2px cyan" }}>
           Login
         </h1>
