@@ -5,13 +5,13 @@ var cors = require("cors");
 const mongoose = require("mongoose");
 connectToMongo();
 const app = express();
-app.use(cors({
-  origin: "https://astounding-churros-0f8805.netlify.app",
-  methods: ["POST", "GET", "PUT", "PATCH", "DELETE"],
-  credentials: true
-}));
 
-
+const corsOptionForCredentials = {
+  origin: process.env['REACT_APP_PORT'],
+  methods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'],
+  credentials: true,
+};
+app.use(cors(corsOptionForCredentials))
 const port = process.env.SERVER_PORT || 8000;
 
 app.get("/", (req, res) => {
@@ -24,28 +24,6 @@ app.use("/api/auth", require("./routes/auth"));
 app.use("/api/notes", require("./routes/notes"));
 
 
-// app.get("/api/v1/login", (req, res) => {
-//   res.send("Sign in");
-// });
-// app.get("/api/v1/signup", (req, res) => {
-//   res.send("Sign up");
-// });
-// if (process.env.NODE_ENV == "production") {
-//   app.use(express.static("inotebookf/build"));
-// const path = require("path");
-// app.get("*", (req, res) => {
-//   res.sendFile(path.resolve(_dirname, "client", "build", "index.html"));
-// });
-// }
-
-// const mongoURI = "mongodb+srv://ashuinotebook:" + encodeURIComponent("ashuinotebook#2309!") + "@cluster0.ximv4ax.mongodb.net/?retryWrites=true&w=majority";
-
-// mongoose.connect(
-//   mongoURI,
-//   () => {
-//     console.log("Mongo Connected Successfully");
-//   }
-// );
 
 app.listen(port, () => {
   console.log(`App listening to port ${port}`);
